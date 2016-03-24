@@ -1,0 +1,427 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EA99222B1CA4766600AFBF07 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EA99222A1CA4766600AFBF07 /* main.m */; };
+		EA99222E1CA4766600AFBF07 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EA99222D1CA4766600AFBF07 /* AppDelegate.m */; };
+		EA9922311CA4766600AFBF07 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9922301CA4766600AFBF07 /* ViewController.m */; };
+		EA9922341CA4766600AFBF07 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA9922321CA4766600AFBF07 /* Main.storyboard */; };
+		EA9922361CA4766600AFBF07 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA9922351CA4766600AFBF07 /* Images.xcassets */; };
+		EA9922391CA4766600AFBF07 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA9922371CA4766600AFBF07 /* LaunchScreen.xib */; };
+		EA9922451CA4766600AFBF07 /* MessengerFBTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9922441CA4766600AFBF07 /* MessengerFBTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EA99223F1CA4766600AFBF07 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EA99221D1CA4766600AFBF07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EA9922241CA4766600AFBF07;
+			remoteInfo = MessengerFB;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		EA9922251CA4766600AFBF07 /* MessengerFB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MessengerFB.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA9922291CA4766600AFBF07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EA99222A1CA4766600AFBF07 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		EA99222C1CA4766600AFBF07 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		EA99222D1CA4766600AFBF07 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		EA99222F1CA4766600AFBF07 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		EA9922301CA4766600AFBF07 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		EA9922331CA4766600AFBF07 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EA9922351CA4766600AFBF07 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		EA9922381CA4766600AFBF07 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		EA99223E1CA4766600AFBF07 /* MessengerFBTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MessengerFBTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA9922431CA4766600AFBF07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EA9922441CA4766600AFBF07 /* MessengerFBTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessengerFBTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EA9922221CA4766600AFBF07 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EA99223B1CA4766600AFBF07 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EA99221C1CA4766600AFBF07 = {
+			isa = PBXGroup;
+			children = (
+				EA9922271CA4766600AFBF07 /* MessengerFB */,
+				EA9922411CA4766600AFBF07 /* MessengerFBTests */,
+				EA9922261CA4766600AFBF07 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EA9922261CA4766600AFBF07 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EA9922251CA4766600AFBF07 /* MessengerFB.app */,
+				EA99223E1CA4766600AFBF07 /* MessengerFBTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EA9922271CA4766600AFBF07 /* MessengerFB */ = {
+			isa = PBXGroup;
+			children = (
+				EA99222C1CA4766600AFBF07 /* AppDelegate.h */,
+				EA99222D1CA4766600AFBF07 /* AppDelegate.m */,
+				EA99222F1CA4766600AFBF07 /* ViewController.h */,
+				EA9922301CA4766600AFBF07 /* ViewController.m */,
+				EA9922321CA4766600AFBF07 /* Main.storyboard */,
+				EA9922351CA4766600AFBF07 /* Images.xcassets */,
+				EA9922371CA4766600AFBF07 /* LaunchScreen.xib */,
+				EA9922281CA4766600AFBF07 /* Supporting Files */,
+			);
+			path = MessengerFB;
+			sourceTree = "<group>";
+		};
+		EA9922281CA4766600AFBF07 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EA9922291CA4766600AFBF07 /* Info.plist */,
+				EA99222A1CA4766600AFBF07 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EA9922411CA4766600AFBF07 /* MessengerFBTests */ = {
+			isa = PBXGroup;
+			children = (
+				EA9922441CA4766600AFBF07 /* MessengerFBTests.m */,
+				EA9922421CA4766600AFBF07 /* Supporting Files */,
+			);
+			path = MessengerFBTests;
+			sourceTree = "<group>";
+		};
+		EA9922421CA4766600AFBF07 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EA9922431CA4766600AFBF07 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EA9922241CA4766600AFBF07 /* MessengerFB */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EA9922481CA4766600AFBF07 /* Build configuration list for PBXNativeTarget "MessengerFB" */;
+			buildPhases = (
+				EA9922211CA4766600AFBF07 /* Sources */,
+				EA9922221CA4766600AFBF07 /* Frameworks */,
+				EA9922231CA4766600AFBF07 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MessengerFB;
+			productName = MessengerFB;
+			productReference = EA9922251CA4766600AFBF07 /* MessengerFB.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EA99223D1CA4766600AFBF07 /* MessengerFBTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EA99224B1CA4766600AFBF07 /* Build configuration list for PBXNativeTarget "MessengerFBTests" */;
+			buildPhases = (
+				EA99223A1CA4766600AFBF07 /* Sources */,
+				EA99223B1CA4766600AFBF07 /* Frameworks */,
+				EA99223C1CA4766600AFBF07 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EA9922401CA4766600AFBF07 /* PBXTargetDependency */,
+			);
+			name = MessengerFBTests;
+			productName = MessengerFBTests;
+			productReference = EA99223E1CA4766600AFBF07 /* MessengerFBTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EA99221D1CA4766600AFBF07 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = Antonpetrovmak;
+				TargetAttributes = {
+					EA9922241CA4766600AFBF07 = {
+						CreatedOnToolsVersion = 6.1;
+					};
+					EA99223D1CA4766600AFBF07 = {
+						CreatedOnToolsVersion = 6.1;
+						TestTargetID = EA9922241CA4766600AFBF07;
+					};
+				};
+			};
+			buildConfigurationList = EA9922201CA4766600AFBF07 /* Build configuration list for PBXProject "MessengerFB" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EA99221C1CA4766600AFBF07;
+			productRefGroup = EA9922261CA4766600AFBF07 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EA9922241CA4766600AFBF07 /* MessengerFB */,
+				EA99223D1CA4766600AFBF07 /* MessengerFBTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EA9922231CA4766600AFBF07 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA9922341CA4766600AFBF07 /* Main.storyboard in Resources */,
+				EA9922391CA4766600AFBF07 /* LaunchScreen.xib in Resources */,
+				EA9922361CA4766600AFBF07 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EA99223C1CA4766600AFBF07 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EA9922211CA4766600AFBF07 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA9922311CA4766600AFBF07 /* ViewController.m in Sources */,
+				EA99222E1CA4766600AFBF07 /* AppDelegate.m in Sources */,
+				EA99222B1CA4766600AFBF07 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EA99223A1CA4766600AFBF07 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA9922451CA4766600AFBF07 /* MessengerFBTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EA9922401CA4766600AFBF07 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EA9922241CA4766600AFBF07 /* MessengerFB */;
+			targetProxy = EA99223F1CA4766600AFBF07 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		EA9922321CA4766600AFBF07 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EA9922331CA4766600AFBF07 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		EA9922371CA4766600AFBF07 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EA9922381CA4766600AFBF07 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EA9922461CA4766600AFBF07 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		EA9922471CA4766600AFBF07 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EA9922491CA4766600AFBF07 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = MessengerFB/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		EA99224A1CA4766600AFBF07 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = MessengerFB/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		EA99224C1CA4766600AFBF07 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = MessengerFBTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MessengerFB.app/MessengerFB";
+			};
+			name = Debug;
+		};
+		EA99224D1CA4766600AFBF07 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = MessengerFBTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MessengerFB.app/MessengerFB";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EA9922201CA4766600AFBF07 /* Build configuration list for PBXProject "MessengerFB" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EA9922461CA4766600AFBF07 /* Debug */,
+				EA9922471CA4766600AFBF07 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EA9922481CA4766600AFBF07 /* Build configuration list for PBXNativeTarget "MessengerFB" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EA9922491CA4766600AFBF07 /* Debug */,
+				EA99224A1CA4766600AFBF07 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		EA99224B1CA4766600AFBF07 /* Build configuration list for PBXNativeTarget "MessengerFBTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EA99224C1CA4766600AFBF07 /* Debug */,
+				EA99224D1CA4766600AFBF07 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EA99221D1CA4766600AFBF07 /* Project object */;
+}
