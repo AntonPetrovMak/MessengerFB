@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import <Firebase/Firebase.h>
+
 @interface ViewController : UIViewController <FBSDKLoginButtonDelegate>
 
 @property (strong, nonatomic) IBOutlet FBSDKLoginButton *loginButton;
