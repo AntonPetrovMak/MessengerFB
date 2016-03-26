@@ -16,10 +16,11 @@
 		EA99222B1CA4766600AFBF07 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EA99222A1CA4766600AFBF07 /* main.m */; };
 		EA99222E1CA4766600AFBF07 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EA99222D1CA4766600AFBF07 /* AppDelegate.m */; };
 		EA9922311CA4766600AFBF07 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9922301CA4766600AFBF07 /* ViewController.m */; };
-		EA9922341CA4766600AFBF07 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA9922321CA4766600AFBF07 /* Main.storyboard */; };
 		EA9922361CA4766600AFBF07 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA9922351CA4766600AFBF07 /* Images.xcassets */; };
 		EA9922391CA4766600AFBF07 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA9922371CA4766600AFBF07 /* LaunchScreen.xib */; };
 		EA9922451CA4766600AFBF07 /* MessengerFBTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9922441CA4766600AFBF07 /* MessengerFBTests.m */; };
+		EAB2C9D61CA6E8EC00F78E5A /* PAMUsersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB2C9D51CA6E8EC00F78E5A /* PAMUsersTableViewController.m */; };
+		EAB2C9D91CA6F77100F78E5A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAB2C9D71CA6F77100F78E5A /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +39,7 @@
 		A1E637E778CBD5B535F278E6 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA3A27811CA4796B00F9DDDD /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = MessengerFB/FBFrameworks/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		EA3A27841CA47A8A00F9DDDD /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = MessengerFB/FBFrameworks/FBSDKLoginKit.framework; sourceTree = "<group>"; };
-		EA50A6D71CA47F6C00B6D63A /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		EA50A6D71CA47F6C00B6D63A /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		EA9922251CA4766600AFBF07 /* MessengerFB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MessengerFB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA9922291CA4766600AFBF07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA99222A1CA4766600AFBF07 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -46,12 +47,14 @@
 		EA99222D1CA4766600AFBF07 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		EA99222F1CA4766600AFBF07 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		EA9922301CA4766600AFBF07 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		EA9922331CA4766600AFBF07 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EA9922351CA4766600AFBF07 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		EA9922381CA4766600AFBF07 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		EA99223E1CA4766600AFBF07 /* MessengerFBTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MessengerFBTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA9922431CA4766600AFBF07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA9922441CA4766600AFBF07 /* MessengerFBTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessengerFBTests.m; sourceTree = "<group>"; };
+		EAB2C9D41CA6E8EC00F78E5A /* PAMUsersTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAMUsersTableViewController.h; sourceTree = "<group>"; };
+		EAB2C9D51CA6E8EC00F78E5A /* PAMUsersTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAMUsersTableViewController.m; sourceTree = "<group>"; };
+		EAB2C9D81CA6F77100F78E5A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,7 +109,6 @@
 		EA99221C1CA4766600AFBF07 = {
 			isa = PBXGroup;
 			children = (
-				EA50A6D71CA47F6C00B6D63A /* Podfile */,
 				EA3A27801CA4795800F9DDDD /* FBFrameworks */,
 				EA9922271CA4766600AFBF07 /* MessengerFB */,
 				EA9922411CA4766600AFBF07 /* MessengerFBTests */,
@@ -128,11 +130,13 @@
 		EA9922271CA4766600AFBF07 /* MessengerFB */ = {
 			isa = PBXGroup;
 			children = (
+				EAB2C9D41CA6E8EC00F78E5A /* PAMUsersTableViewController.h */,
+				EAB2C9D51CA6E8EC00F78E5A /* PAMUsersTableViewController.m */,
 				EA99222C1CA4766600AFBF07 /* AppDelegate.h */,
 				EA99222D1CA4766600AFBF07 /* AppDelegate.m */,
 				EA99222F1CA4766600AFBF07 /* ViewController.h */,
 				EA9922301CA4766600AFBF07 /* ViewController.m */,
-				EA9922321CA4766600AFBF07 /* Main.storyboard */,
+				EAB2C9D71CA6F77100F78E5A /* Main.storyboard */,
 				EA9922351CA4766600AFBF07 /* Images.xcassets */,
 				EA9922371CA4766600AFBF07 /* LaunchScreen.xib */,
 				EA9922281CA4766600AFBF07 /* Supporting Files */,
@@ -143,6 +147,7 @@
 		EA9922281CA4766600AFBF07 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				EA50A6D71CA47F6C00B6D63A /* Podfile */,
 				EA9922291CA4766600AFBF07 /* Info.plist */,
 				EA99222A1CA4766600AFBF07 /* main.m */,
 			);
@@ -249,10 +254,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA9922341CA4766600AFBF07 /* Main.storyboard in Resources */,
 				EA9922391CA4766600AFBF07 /* LaunchScreen.xib in Resources */,
 				EA50A6D81CA47F6C00B6D63A /* Podfile in Resources */,
 				EA9922361CA4766600AFBF07 /* Images.xcassets in Resources */,
+				EAB2C9D91CA6F77100F78E5A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,6 +326,7 @@
 				EA9922311CA4766600AFBF07 /* ViewController.m in Sources */,
 				EA99222E1CA4766600AFBF07 /* AppDelegate.m in Sources */,
 				EA99222B1CA4766600AFBF07 /* main.m in Sources */,
+				EAB2C9D61CA6E8EC00F78E5A /* PAMUsersTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,20 +349,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		EA9922321CA4766600AFBF07 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EA9922331CA4766600AFBF07 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		EA9922371CA4766600AFBF07 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				EA9922381CA4766600AFBF07 /* Base */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		EAB2C9D71CA6F77100F78E5A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EAB2C9D81CA6F77100F78E5A /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
