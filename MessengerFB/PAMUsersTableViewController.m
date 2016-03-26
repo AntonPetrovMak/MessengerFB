@@ -7,8 +7,13 @@
 //
 
 #import "PAMUsersTableViewController.h"
+#import <Firebase/Firebase.h>
 
 @interface PAMUsersTableViewController ()
+
+@property(strong, nonatomic) Firebase *ref;
+@property(strong, nonatomic) PAMUser *currentUser;
+@property(strong, nonatomic) NSMutableArray *arrayWithUser;
 
 @end
 
@@ -16,94 +21,93 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.ref = [[Firebase alloc] initWithUrl:@"https://shining-heat-3690.firebaseio.com"];
+    self.arrayWithUser =[NSMutableArray new];
+    NSData *userInfo = [[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
+    if(userInfo) {
+        self.currentUser = (PAMUser *)[NSKeyedUnarchiver unarchiveObjectWithData:userInfo];
+    } else {
+        self.currentUser = [[PAMUser alloc] initWithFirstName:@"Test" lastName:@"Test" avatarURL:nil];
+    }
+    [self.navigationItem setTitle: [self.currentUser prettyName]];
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
-}
-
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(upDateTable) forControlEvents:UIControlEventValueChanged];
+    self.refreshControl = refreshControl;
     
-    // Configure the cell...
+    [[self.ref childByAppendingPath:@"users"]observeEventType: FEventTypeChildAdded
+                                                    withBlock: [self addUserFromFirebase]
+                                              withCancelBlock:^(NSError *error) {
+     NSLog(@"observeEventType: %@", error.description);
+     }];
+}
+
+- (void)upDateTable {
+    [self.tableView reloadData];
+    [self.refreshControl endRefreshing];
+}
+
+- (void(^)(FDataSnapshot *snapshot)) addUserFromFirebase {
+    __weak PAMUsersTableViewController *weakSelf = self;
+    return ^(FDataSnapshot *snapshot) {
+        PAMUser *user = [[PAMUser alloc] initWithFirstName:snapshot.value[@"firstName"]
+                                                  lastName:snapshot.value[@"lastName"]
+                                                 avatarURL:snapshot.value[@"avatarURL"]];
+        //NSLog(@"%@", user);
+       // NSLog(@"\n%@ %ld\n%@ %ld", [self.currentUser prettyName], [self.currentUser prettyName].length , [user prettyName], [user prettyName].length);
+        if(![weakSelf.currentUser isEqual:user]) {
+            [weakSelf.arrayWithUser addObject: user];
+            #warning bagfix
+            [weakSelf.tableView reloadData];
+        }
+    };
+}
+
+- (void)viewDidAppear:(BOOL)animated {
     
-    return cell;
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
+#pragma mark - Action
 - (IBAction)actionLogOut:(UIBarButtonItem *)sender {
-    
     [[FBSDKLoginManager new] logOut];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userInfo"];
     UIViewController *loginViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
     [self presentViewController:loginViewController animated:YES completion:nil];
     //[self dismissViewControllerAnimated:YES completion:nil];
-    
 }
+
+#pragma mark - UITableViewDataSource
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [self.arrayWithUser count];
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    PAMUserTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[PAMUserTableViewCell reuseIdentifire]];
+    if(!cell) {
+        cell = [[PAMUserTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1
+                                           reuseIdentifier:[PAMUserTableViewCell reuseIdentifire]];
+    }
+    PAMUser *user = (PAMUser *)[self.arrayWithUser objectAtIndex:indexPath.row];
+    cell.userName.text = [NSString stringWithFormat:@"%@", [user prettyName]];
+    cell.avatar.image = [user avatarImage];
+    [cell.avatar.layer setCornerRadius:30.f];
+
+    return cell;
+}
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+
 @end

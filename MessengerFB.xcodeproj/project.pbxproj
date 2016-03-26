@@ -21,6 +21,8 @@
 		EA9922451CA4766600AFBF07 /* MessengerFBTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9922441CA4766600AFBF07 /* MessengerFBTests.m */; };
 		EAB2C9D61CA6E8EC00F78E5A /* PAMUsersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB2C9D51CA6E8EC00F78E5A /* PAMUsersTableViewController.m */; };
 		EAB2C9D91CA6F77100F78E5A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAB2C9D71CA6F77100F78E5A /* Main.storyboard */; };
+		EAB2C9DC1CA7208000F78E5A /* PAMUser.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB2C9DB1CA7208000F78E5A /* PAMUser.m */; };
+		EAB2C9DF1CA7398000F78E5A /* PAMUserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB2C9DE1CA7398000F78E5A /* PAMUserTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,10 @@
 		EAB2C9D41CA6E8EC00F78E5A /* PAMUsersTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAMUsersTableViewController.h; sourceTree = "<group>"; };
 		EAB2C9D51CA6E8EC00F78E5A /* PAMUsersTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAMUsersTableViewController.m; sourceTree = "<group>"; };
 		EAB2C9D81CA6F77100F78E5A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EAB2C9DA1CA7208000F78E5A /* PAMUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAMUser.h; sourceTree = "<group>"; };
+		EAB2C9DB1CA7208000F78E5A /* PAMUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAMUser.m; sourceTree = "<group>"; };
+		EAB2C9DD1CA7398000F78E5A /* PAMUserTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAMUserTableViewCell.h; sourceTree = "<group>"; };
+		EAB2C9DE1CA7398000F78E5A /* PAMUserTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAMUserTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +136,10 @@
 		EA9922271CA4766600AFBF07 /* MessengerFB */ = {
 			isa = PBXGroup;
 			children = (
+				EAB2C9DD1CA7398000F78E5A /* PAMUserTableViewCell.h */,
+				EAB2C9DE1CA7398000F78E5A /* PAMUserTableViewCell.m */,
+				EAB2C9DA1CA7208000F78E5A /* PAMUser.h */,
+				EAB2C9DB1CA7208000F78E5A /* PAMUser.m */,
 				EAB2C9D41CA6E8EC00F78E5A /* PAMUsersTableViewController.h */,
 				EAB2C9D51CA6E8EC00F78E5A /* PAMUsersTableViewController.m */,
 				EA99222C1CA4766600AFBF07 /* AppDelegate.h */,
@@ -323,10 +333,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAB2C9DC1CA7208000F78E5A /* PAMUser.m in Sources */,
 				EA9922311CA4766600AFBF07 /* ViewController.m in Sources */,
 				EA99222E1CA4766600AFBF07 /* AppDelegate.m in Sources */,
 				EA99222B1CA4766600AFBF07 /* main.m in Sources */,
 				EAB2C9D61CA6E8EC00F78E5A /* PAMUsersTableViewController.m in Sources */,
+				EAB2C9DF1CA7398000F78E5A /* PAMUserTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

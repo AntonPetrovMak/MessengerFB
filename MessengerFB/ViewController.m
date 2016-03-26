@@ -17,12 +17,11 @@
 @implementation ViewController
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     self.ref = [[Firebase alloc] initWithUrl:@"https://shining-heat-3690.firebaseio.com"];
-
     self.loginButton.delegate = self;
     self.loginButton.readPermissions = @[@"public_profile", @"email"];
-    
     [self.view addSubview:self.loginButton];
 }
 
@@ -40,27 +39,21 @@
                          startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
                              NSLog(@"%@", result);
                              if (!error) {
-                                 /*[[self.ref childByAppendingPath:@"users"]observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
-                                     NSLog(@"observeEventType :%@", snapshot.value[@"first_name"]);
-                                 } withCancelBlock:^(NSError *error) {
-                                     NSLog(@"observeEventType: %@", error.description);
-                                 }];*/
-                                 
-                                 NSString *url = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=normal",result[@"id"]];
                                  NSLog(@"Logged in! %@", authData);
-                                 NSDictionary *userInfo = @{@"first_name" : result[@"first_name"],
-                                                            @"last_name" : result[@"last_name"],
-                                                            @"pictureURL": url };
+                                 NSString *url = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=normal",result[@"id"]];
+
+                                 PAMUser *currentUser = [[PAMUser alloc] initWithFirstName:result[@"first_name"] lastName:result[@"last_name"] avatarURL:url];
                                  
                                  Firebase *usersRef = [self.ref childByAppendingPath: [NSString stringWithFormat:@"users/%@", authData.uid]];
-                                 [usersRef setValue: userInfo];
+                                 [usersRef setValue: [currentUser userInfo]];
                                  
-                                 NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-                                 [userDefaults setObject:userInfo forKey:@"userInfo"];
+                                 
+                                 NSData *data = [NSKeyedArchiver archivedDataWithRootObject:currentUser];
+                                 [[NSUserDefaults standardUserDefaults] setObject:data forKey:@"userInfo"];
+                                 [self.loginIndicator stopAnimating];
                                  
                                  UINavigationController *NC = (UINavigationController *)[self.storyboard instantiateViewControllerWithIdentifier:@"UsersNavigationController"];
                                  [self presentViewController:NC animated:YES completion:nil];
-                                 
                              }
                              else{
                                  NSLog(@"%@", [error localizedDescription]);
@@ -70,6 +63,13 @@
                     }
                 }];
 }
+
+- (void(^)(FBSDKGraphRequestConnection *connection, id result, NSError *error)) saveUserData {
+    return ^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
+        
+    };
+}
+
 
 #pragma mark - FBSDKLoginButtonDelegate
 
@@ -81,6 +81,7 @@
         } else if (result.isCancelled) {
             NSLog(@"Facebook login got cancelled.");
         } else {
+            [self.loginIndicator startAnimating];
             [self authenticationInFirebase];
             
         }
@@ -89,7 +90,6 @@
 
 - (void)loginButtonDidLogOut:(FBSDKLoginButton *)loginButton {
     NSLog(@"LOG OUT");
-    
 }
 
 @end

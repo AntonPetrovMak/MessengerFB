@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import "PAMUserTableViewCell.h"
+#import "PAMUser.h"
 
-@interface PAMUsersTableViewController : UITableViewController
+@interface PAMUsersTableViewController : UITableViewController <UITableViewDataSource>
 
 - (IBAction)actionLogOut:(UIBarButtonItem *)sender;
 
