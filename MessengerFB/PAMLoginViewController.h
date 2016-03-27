@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  PAMLoginViewController.h
 //  MessengerFB
 //
 //  Created by iMac309 on 24.03.16.
@@ -12,7 +12,7 @@
 #import <Firebase/Firebase.h>
 #import "PAMUser.h"
 
-@interface ViewController : UIViewController <FBSDKLoginButtonDelegate>
+@interface PAMLoginViewController : UIViewController <FBSDKLoginButtonDelegate>
 
 @property (strong, nonatomic) IBOutlet FBSDKLoginButton *loginButton;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loginIndicator;

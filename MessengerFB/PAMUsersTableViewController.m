@@ -35,9 +35,9 @@
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl addTarget:self action:@selector(upDateTable) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refreshControl;
-    
+    __weak PAMUsersTableViewController *weakSelf = self;
     [[self.ref childByAppendingPath:@"users"]observeEventType: FEventTypeChildAdded
-                                                    withBlock: [self addUserFromFirebase]
+                                                    withBlock: [self addUserFromFirebase:weakSelf]
                                               withCancelBlock:^(NSError *error) {
      NSLog(@"observeEventType: %@", error.description);
      }];
@@ -48,17 +48,14 @@
     [self.refreshControl endRefreshing];
 }
 
-- (void(^)(FDataSnapshot *snapshot)) addUserFromFirebase {
-    __weak PAMUsersTableViewController *weakSelf = self;
+- (void(^)(FDataSnapshot *snapshot)) addUserFromFirebase:(PAMUsersTableViewController *) weakSelf {
     return ^(FDataSnapshot *snapshot) {
         PAMUser *user = [[PAMUser alloc] initWithFirstName:snapshot.value[@"firstName"]
                                                   lastName:snapshot.value[@"lastName"]
                                                  avatarURL:snapshot.value[@"avatarURL"]];
         //NSLog(@"%@", user);
-       // NSLog(@"\n%@ %ld\n%@ %ld", [self.currentUser prettyName], [self.currentUser prettyName].length , [user prettyName], [user prettyName].length);
         if(![weakSelf.currentUser isEqual:user]) {
             [weakSelf.arrayWithUser addObject: user];
-            #warning bagfix
             [weakSelf.tableView reloadData];
         }
     };
@@ -72,9 +69,8 @@
 - (IBAction)actionLogOut:(UIBarButtonItem *)sender {
     [[FBSDKLoginManager new] logOut];
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"userInfo"];
-    UIViewController *loginViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+    UIViewController *loginViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PAMLoginViewController"];
     [self presentViewController:loginViewController animated:YES completion:nil];
-    //[self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - UITableViewDataSource

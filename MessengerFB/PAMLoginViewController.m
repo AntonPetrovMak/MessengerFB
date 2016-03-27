@@ -1,20 +1,20 @@
 //
-//  ViewController.m
+//  PAMLoginViewController.m
 //  MessengerFB
 //
 //  Created by iMac309 on 24.03.16.
 //  Copyright (c) 2016 Antonpetrovmak. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "PAMLoginViewController.h"
 
-@interface ViewController ()
+@interface PAMLoginViewController ()
 
 @property(strong, nonatomic) Firebase *ref;
 
 @end
 
-@implementation ViewController
+@implementation PAMLoginViewController
 
 - (void)viewDidLoad {
     
@@ -23,10 +23,12 @@
     self.loginButton.delegate = self;
     self.loginButton.readPermissions = @[@"public_profile", @"email"];
     [self.view addSubview:self.loginButton];
+    
 }
 
 - (void)authenticationInFirebase {
     NSString *accessToken = [[FBSDKAccessToken currentAccessToken] tokenString];
+    __weak PAMLoginViewController *weakSelf = self;
     
     [self.ref authWithOAuthProvider:@"facebook" token:accessToken
                 withCompletionBlock:^(NSError *error, FAuthData *authData) {
@@ -37,23 +39,22 @@
                         [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me"
                                                            parameters:@{@"fields": @"picture, first_name, last_name"}]
                          startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
-                             NSLog(@"%@", result);
                              if (!error) {
                                  NSLog(@"Logged in! %@", authData);
                                  NSString *url = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=normal",result[@"id"]];
 
                                  PAMUser *currentUser = [[PAMUser alloc] initWithFirstName:result[@"first_name"] lastName:result[@"last_name"] avatarURL:url];
                                  
-                                 Firebase *usersRef = [self.ref childByAppendingPath: [NSString stringWithFormat:@"users/%@", authData.uid]];
+                                 Firebase *usersRef = [weakSelf.ref childByAppendingPath: [NSString stringWithFormat:@"users/%@", authData.uid]];
                                  [usersRef setValue: [currentUser userInfo]];
                                  
                                  
                                  NSData *data = [NSKeyedArchiver archivedDataWithRootObject:currentUser];
                                  [[NSUserDefaults standardUserDefaults] setObject:data forKey:@"userInfo"];
-                                 [self.loginIndicator stopAnimating];
+                                 [weakSelf.loginIndicator stopAnimating];
                                  
-                                 UINavigationController *NC = (UINavigationController *)[self.storyboard instantiateViewControllerWithIdentifier:@"UsersNavigationController"];
-                                 [self presentViewController:NC animated:YES completion:nil];
+                                 UINavigationController *NC = (UINavigationController *)[weakSelf.storyboard instantiateViewControllerWithIdentifier:@"UsersNavigationController"];
+                                 [weakSelf presentViewController:NC animated:YES completion:nil];
                              }
                              else{
                                  NSLog(@"%@", [error localizedDescription]);
@@ -62,12 +63,6 @@
                         
                     }
                 }];
-}
-
-- (void(^)(FBSDKGraphRequestConnection *connection, id result, NSError *error)) saveUserData {
-    return ^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
-        
-    };
 }
 
 
