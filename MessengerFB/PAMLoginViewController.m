@@ -32,35 +32,21 @@
     
     [self.ref authWithOAuthProvider:@"facebook" token:accessToken
                 withCompletionBlock:^(NSError *error, FAuthData *authData) {
-                    
                     if (error) {
                         NSLog(@"Login failed. %@", error);
                     } else {
-                        [[[FBSDKGraphRequest alloc] initWithGraphPath:@"me"
-                                                           parameters:@{@"fields": @"picture, first_name, last_name"}]
-                         startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
-                             if (!error) {
-                                 NSLog(@"Logged in! %@", authData);
-                                 NSString *url = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=normal",result[@"id"]];
-
-                                 PAMUser *currentUser = [[PAMUser alloc] initWithFirstName:result[@"first_name"] lastName:result[@"last_name"] avatarURL:url];
-                                 
-                                 Firebase *usersRef = [weakSelf.ref childByAppendingPath: [NSString stringWithFormat:@"users/%@", authData.uid]];
-                                 [usersRef setValue: [currentUser userInfo]];
-                                 
-                                 
-                                 NSData *data = [NSKeyedArchiver archivedDataWithRootObject:currentUser];
-                                 [[NSUserDefaults standardUserDefaults] setObject:data forKey:@"userInfo"];
-                                 [weakSelf.loginIndicator stopAnimating];
-                                 
-                                 UINavigationController *NC = (UINavigationController *)[weakSelf.storyboard instantiateViewControllerWithIdentifier:@"UsersNavigationController"];
-                                 [weakSelf presentViewController:NC animated:YES completion:nil];
-                             }
-                             else{
-                                 NSLog(@"%@", [error localizedDescription]);
-                             }
-                         }];
+                        PAMUser *currentUser = [[PAMUser alloc] initWithAuthData:authData];
+                        NSLog(@"%@", currentUser);
                         
+                        Firebase *usersRef = [weakSelf.ref childByAppendingPath: [NSString stringWithFormat:@"users/%@", currentUser.uid]];
+                        [usersRef setValue: [currentUser userInfo]];
+                        
+                        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:currentUser];
+                        [[NSUserDefaults standardUserDefaults] setObject:data forKey:@"userInfo"];
+                        [weakSelf.loginIndicator stopAnimating];
+                        
+                        UINavigationController *NC = (UINavigationController *)[weakSelf.storyboard instantiateViewControllerWithIdentifier:@"UsersNavigationController"];
+                        [weakSelf presentViewController:NC animated:YES completion:nil];
                     }
                 }];
 }

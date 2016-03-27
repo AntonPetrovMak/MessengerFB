@@ -28,9 +28,9 @@
     if(userInfo) {
         self.currentUser = (PAMUser *)[NSKeyedUnarchiver unarchiveObjectWithData:userInfo];
     } else {
-        self.currentUser = [[PAMUser alloc] initWithFirstName:@"Test" lastName:@"Test" avatarURL:nil];
+        self.currentUser = [PAMUser new];
     }
-    [self.navigationItem setTitle: [self.currentUser prettyName]];
+    
     
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl addTarget:self action:@selector(upDateTable) forControlEvents:UIControlEventValueChanged];
@@ -50,9 +50,7 @@
 
 - (void(^)(FDataSnapshot *snapshot)) addUserFromFirebase:(PAMUsersTableViewController *) weakSelf {
     return ^(FDataSnapshot *snapshot) {
-        PAMUser *user = [[PAMUser alloc] initWithFirstName:snapshot.value[@"firstName"]
-                                                  lastName:snapshot.value[@"lastName"]
-                                                 avatarURL:snapshot.value[@"avatarURL"]];
+        PAMUser *user = [[PAMUser alloc] initWithDataSnapshot:snapshot];
         //NSLog(@"%@", user);
         if(![weakSelf.currentUser isEqual:user]) {
             [weakSelf.arrayWithUser addObject: user];
@@ -76,7 +74,6 @@
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-
     return 1;
 }
 
@@ -86,7 +83,6 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     PAMUserTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:[PAMUserTableViewCell reuseIdentifire]];
     if(!cell) {
         cell = [[PAMUserTableViewCell alloc] initWithStyle:UITableViewCellStyleValue1
@@ -100,9 +96,21 @@
     return cell;
 }
 
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"MessagerSegue"]) {
+        PAMMessagerViewController *messagerViewController = [segue destinationViewController];
+        NSInteger selectedRow = [[self.tableView indexPathForSelectedRow] row];
+        PAMUser *user = [self.arrayWithUser objectAtIndex:selectedRow];
+        messagerViewController.currentUser = self.currentUser;
+        messagerViewController.interlocutor = user;
+        messagerViewController.senderId = self.currentUser.uid;
+        messagerViewController.senderDisplayName = self.currentUser.prettyName;
+    }
 }
 
 

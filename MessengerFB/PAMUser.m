@@ -10,18 +10,33 @@
 
 @implementation PAMUser
 
-- (instancetype) initWithFirstName:(NSString *) firstName lastName:(NSString *) lastName avatarURL:(NSString *) avatarURL {
+- (instancetype)initWithAuthData:(FAuthData *) authData {
     self = [super init];
     if (self) {
-        self.firstName = firstName;
-        self.lastName = lastName;
-        self.avatarURL = avatarURL;
+        self.uid = authData.uid;
+        self.email = authData.providerData[@"email"];
+        self.firstName = [authData.providerData[@"cachedUserProfile"] objectForKey:@"first_name"];
+        self.lastName = [authData.providerData[@"cachedUserProfile"] objectForKey:@"last_name"];
+        self.avatarURL = authData.providerData[@"profileImageURL"];
+    }
+    return self;
+}
+
+- (instancetype)initWithDataSnapshot:(FDataSnapshot *) snapshot {
+    self = [super init];
+    if (self) {
+        self.uid = snapshot.value[@"uid"];
+        self.email = snapshot.value[@"email"];
+        self.firstName = snapshot.value[@"firstName"];
+        self.lastName = snapshot.value[@"lastName"];
+        self.avatarURL = snapshot.value[@"avatarURL"];
     }
     return self;
 }
 
 - (NSString *) description {
-    return [NSString stringWithFormat:@"\nUset name: %@ %@ \nAvatarURL: %@", self.firstName, self.lastName, self.avatarURL];
+    return [NSString stringWithFormat:@"\nUID: %@ \nEmail: %@\nUset name: %@ %@ \nAvatarURL: %@",
+            self.uid, self.email, self.firstName, self.lastName, self.avatarURL];
 }
 
 #pragma mark - Helpers
@@ -30,9 +45,11 @@
 }
 
 - (NSDictionary *)userInfo {
-    NSDictionary *userInfo = @{@"firstName" : self.firstName,
-                                @"lastName" : self.lastName,
-                               @"avatarURL" : self.avatarURL};
+    NSDictionary *userInfo = @{    @"uid": self.uid,
+                                 @"email": self.email,
+                            @"firstName" : self.firstName,
+                             @"lastName" : self.lastName,
+                            @"avatarURL" : self.avatarURL};
     return userInfo;
 }
 
@@ -44,6 +61,8 @@
 
 #pragma mark - NSCoding
 - (void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:self.uid forKey:@"uid"];
+    [aCoder encodeObject:self.email forKey:@"email"];
     [aCoder encodeObject:self.firstName forKey:@"firstName"];
     [aCoder encodeObject:self.lastName forKey:@"lastName"];
     [aCoder encodeObject:self.avatarURL forKey:@"avatarURL"];
@@ -51,6 +70,8 @@
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [self init];
+    self.uid = [aDecoder decodeObjectForKey:@"uid"];
+    self.email = [aDecoder decodeObjectForKey:@"email"];
     self.firstName = [aDecoder decodeObjectForKey:@"firstName"];
     self.lastName = [aDecoder decodeObjectForKey:@"lastName"];
     self.avatarURL = [aDecoder decodeObjectForKey:@"avatarURL"];

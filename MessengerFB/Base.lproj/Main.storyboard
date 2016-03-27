@@ -48,9 +48,10 @@
             <objects>
                 <tableViewController storyboardIdentifier="UsersTableViewController" id="h9G-zn-Yox" customClass="PAMUsersTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="22" sectionFooterHeight="22" id="rbB-j7-ekF">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="sectionIndexBackgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" restorationIdentifier="PAMUserTableViewCell" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="PAMUserTableViewCell" id="efp-QR-rCc" customClass="PAMUserTableViewCell">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -86,35 +87,72 @@
                                 <connections>
                                     <outlet property="avatar" destination="m53-jD-lsB" id="fk0-iX-Zbt"/>
                                     <outlet property="userName" destination="YvF-gf-yqa" id="Sn9-vc-xn0"/>
+                                    <segue destination="t83-ww-tSQ" kind="show" identifier="MessagerSegue" id="eNd-pi-oTD"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="h9G-zn-Yox" id="bHA-Ey-fu0"/>
-                            <outlet property="delegate" destination="h9G-zn-Yox" id="PZi-s5-7kl"/>
+                            <outlet property="delegate" destination="h9G-zn-Yox" id="o6q-Ly-8Qw"/>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="USERS" id="hjm-Gc-3Zq">
                         <barButtonItem key="leftBarButtonItem" title="LOG OUT" id="hCv-Rf-iiy">
+                            <color key="tintColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="actionLogOut:" destination="h9G-zn-Yox" id="6Ej-TM-JI7"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SjN-9f-EOb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="765.5" y="1718.5"/>
         </scene>
+        <!--Messager View Controller-->
+        <scene sceneID="He1-1h-6ol">
+            <objects>
+                <viewController storyboardIdentifier="PAMMessagerViewController" id="t83-ww-tSQ" customClass="PAMMessagerViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="IbI-fe-4qu"/>
+                        <viewControllerLayoutGuide type="bottom" id="nPK-e5-oyr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hew-Wg-lot">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="RlA-ys-C7f">
+                        <barButtonItem key="rightBarButtonItem" title="AW" id="Rmr-jl-Moa">
+                            <color key="tintColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="fakeSender:" destination="t83-ww-tSQ" id="Lp7-ee-HOH"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gGH-lP-byh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1252.5" y="1718.5"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="so1-GF-sDN">
             <objects>
                 <navigationController storyboardIdentifier="UsersNavigationController" id="CPP-Cm-ZcW" sceneMemberID="viewController">
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="tYs-f3-iad">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="tYs-f3-iad">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.99607843139999996" green="0.99607843139999996" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="0.99607843139999996" green="0.99607843139999996" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.0039215686274509803" green="0.43137254901960786" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="textShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="h9G-zn-Yox" kind="relationship" relationship="rootViewController" id="VCL-1C-L78"/>

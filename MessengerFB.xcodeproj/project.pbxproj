@@ -13,6 +13,7 @@
 		EA3A27851CA47A8A00F9DDDD /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA3A27841CA47A8A00F9DDDD /* FBSDKLoginKit.framework */; };
 		EA3A27861CA47A8A00F9DDDD /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA3A27841CA47A8A00F9DDDD /* FBSDKLoginKit.framework */; };
 		EA50A6D81CA47F6C00B6D63A /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = EA50A6D71CA47F6C00B6D63A /* Podfile */; };
+		EA65306A1CA82215006934EB /* PAMMessagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6530691CA82215006934EB /* PAMMessagerViewController.m */; };
 		EA99222B1CA4766600AFBF07 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EA99222A1CA4766600AFBF07 /* main.m */; };
 		EA99222E1CA4766600AFBF07 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EA99222D1CA4766600AFBF07 /* AppDelegate.m */; };
 		EA9922311CA4766600AFBF07 /* PAMLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9922301CA4766600AFBF07 /* PAMLoginViewController.m */; };
@@ -42,6 +43,8 @@
 		EA3A27811CA4796B00F9DDDD /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = MessengerFB/FBFrameworks/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		EA3A27841CA47A8A00F9DDDD /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = MessengerFB/FBFrameworks/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		EA50A6D71CA47F6C00B6D63A /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		EA6530681CA82215006934EB /* PAMMessagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAMMessagerViewController.h; sourceTree = "<group>"; };
+		EA6530691CA82215006934EB /* PAMMessagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAMMessagerViewController.m; sourceTree = "<group>"; };
 		EA9922251CA4766600AFBF07 /* MessengerFB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MessengerFB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA9922291CA4766600AFBF07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA99222A1CA4766600AFBF07 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -141,6 +144,8 @@
 				EA99222D1CA4766600AFBF07 /* AppDelegate.m */,
 				EA99222F1CA4766600AFBF07 /* PAMLoginViewController.h */,
 				EA9922301CA4766600AFBF07 /* PAMLoginViewController.m */,
+				EA6530681CA82215006934EB /* PAMMessagerViewController.h */,
+				EA6530691CA82215006934EB /* PAMMessagerViewController.m */,
 				EAE17F361CA7FC0900B37F33 /* TableViewWithUsers */,
 				EAE17F371CA7FC3200B37F33 /* Storyboards */,
 				EA9922281CA4766600AFBF07 /* Supporting Files */,
@@ -362,6 +367,7 @@
 				EA99222E1CA4766600AFBF07 /* AppDelegate.m in Sources */,
 				EA99222B1CA4766600AFBF07 /* main.m in Sources */,
 				EAB2C9D61CA6E8EC00F78E5A /* PAMUsersTableViewController.m in Sources */,
+				EA65306A1CA82215006934EB /* PAMMessagerViewController.m in Sources */,
 				EAB2C9DF1CA7398000F78E5A /* PAMUserTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -487,8 +493,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/MessengerFB/FBFrameworks";
 				INFOPLIST_FILE = MessengerFB/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -499,8 +507,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/MessengerFB/FBFrameworks";
 				INFOPLIST_FILE = MessengerFB/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
