@@ -20,6 +20,7 @@
 		EA9922361CA4766600AFBF07 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA9922351CA4766600AFBF07 /* Images.xcassets */; };
 		EA9922391CA4766600AFBF07 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA9922371CA4766600AFBF07 /* LaunchScreen.xib */; };
 		EA9922451CA4766600AFBF07 /* MessengerFBTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9922441CA4766600AFBF07 /* MessengerFBTests.m */; };
+		EAB2AE8D1CA96BE800CFF52B /* PAMUserInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB2AE8C1CA96BE800CFF52B /* PAMUserInfoView.m */; };
 		EAB2C9D61CA6E8EC00F78E5A /* PAMUsersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB2C9D51CA6E8EC00F78E5A /* PAMUsersTableViewController.m */; };
 		EAB2C9D91CA6F77100F78E5A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAB2C9D71CA6F77100F78E5A /* Main.storyboard */; };
 		EAB2C9DC1CA7208000F78E5A /* PAMUser.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB2C9DB1CA7208000F78E5A /* PAMUser.m */; };
@@ -57,6 +58,8 @@
 		EA99223E1CA4766600AFBF07 /* MessengerFBTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MessengerFBTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA9922431CA4766600AFBF07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA9922441CA4766600AFBF07 /* MessengerFBTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessengerFBTests.m; sourceTree = "<group>"; };
+		EAB2AE8B1CA96BE800CFF52B /* PAMUserInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAMUserInfoView.h; sourceTree = "<group>"; };
+		EAB2AE8C1CA96BE800CFF52B /* PAMUserInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAMUserInfoView.m; sourceTree = "<group>"; };
 		EAB2C9D41CA6E8EC00F78E5A /* PAMUsersTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAMUsersTableViewController.h; sourceTree = "<group>"; };
 		EAB2C9D51CA6E8EC00F78E5A /* PAMUsersTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAMUsersTableViewController.m; sourceTree = "<group>"; };
 		EAB2C9D81CA6F77100F78E5A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -139,6 +142,7 @@
 		EA9922271CA4766600AFBF07 /* MessengerFB */ = {
 			isa = PBXGroup;
 			children = (
+				EAB2AE8E1CA96BED00CFF52B /* Views */,
 				EAE17F381CA7FC7700B37F33 /* Models */,
 				EA99222C1CA4766600AFBF07 /* AppDelegate.h */,
 				EA99222D1CA4766600AFBF07 /* AppDelegate.m */,
@@ -179,6 +183,15 @@
 				EA9922431CA4766600AFBF07 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EAB2AE8E1CA96BED00CFF52B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EAB2AE8B1CA96BE800CFF52B /* PAMUserInfoView.h */,
+				EAB2AE8C1CA96BE800CFF52B /* PAMUserInfoView.m */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		EAE17F361CA7FC0900B37F33 /* TableViewWithUsers */ = {
@@ -362,6 +375,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAB2AE8D1CA96BE800CFF52B /* PAMUserInfoView.m in Sources */,
 				EAB2C9DC1CA7208000F78E5A /* PAMUser.m in Sources */,
 				EA9922311CA4766600AFBF07 /* PAMLoginViewController.m in Sources */,
 				EA99222E1CA4766600AFBF07 /* AppDelegate.m in Sources */,

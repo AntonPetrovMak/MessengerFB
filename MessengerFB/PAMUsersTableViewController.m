@@ -106,6 +106,10 @@
         PAMMessagerViewController *messagerViewController = [segue destinationViewController];
         NSInteger selectedRow = [[self.tableView indexPathForSelectedRow] row];
         PAMUser *user = [self.arrayWithUser objectAtIndex:selectedRow];
+
+        
+        self.navigationItem.backBarButtonItem.title = [user prettyName];
+        //self.navigationItem.backBarButtonItem.image = [user avatarImage];
         messagerViewController.currentUser = self.currentUser;
         messagerViewController.interlocutor = user;
         messagerViewController.senderId = self.currentUser.uid;

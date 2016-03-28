@@ -43,7 +43,7 @@
             </objects>
             <point key="canvasLocation" x="315" y="908"/>
         </scene>
-        <!--USERS-->
+        <!--CONTACTS -->
         <scene sceneID="b6s-Tr-AMr">
             <objects>
                 <tableViewController storyboardIdentifier="UsersTableViewController" id="h9G-zn-Yox" customClass="PAMUsersTableViewController" sceneMemberID="viewController">
@@ -96,7 +96,8 @@
                             <outlet property="delegate" destination="h9G-zn-Yox" id="o6q-Ly-8Qw"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="USERS" id="hjm-Gc-3Zq">
+                    <navigationItem key="navigationItem" title="CONTACTS " id="hjm-Gc-3Zq">
+                        <barButtonItem key="backBarButtonItem" title="Contacts" id="PJ7-Wo-Ful"/>
                         <barButtonItem key="leftBarButtonItem" title="LOG OUT" id="hCv-Rf-iiy">
                             <color key="tintColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
@@ -125,10 +126,10 @@
                         <color key="backgroundColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="RlA-ys-C7f">
-                        <barButtonItem key="rightBarButtonItem" title="AW" id="Rmr-jl-Moa">
-                            <color key="tintColor" red="0.91764705879999997" green="0.91764705879999997" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="title"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="jzz-cG-DcT">
                             <connections>
-                                <action selector="fakeSender:" destination="t83-ww-tSQ" id="Lp7-ee-HOH"/>
+                                <action selector="fakeSender:" destination="t83-ww-tSQ" id="Z91-7c-p8b"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -152,6 +153,7 @@
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <color key="textShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <offsetWrapper key="textShadowOffset" horizontal="0.0" vertical="0.0"/>
                         </textAttributes>
                     </navigationBar>
                     <connections>
