@@ -17,6 +17,5 @@
 @property (strong, nonatomic) IBOutlet FBSDKLoginButton *loginButton;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loginIndicator;
 
-
 @end
 

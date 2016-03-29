@@ -9,7 +9,6 @@
 #include <JSQMessagesViewController/JSQMessagesViewController.h>
 #import "JSQMessagesBubbleImage.h"
 #import <Firebase/Firebase.h>
-#import "PAMUserInfoView.h"
 #import "PAMUser.h"
 
 @interface PAMMessagerViewController : JSQMessagesViewController
@@ -20,9 +19,5 @@
 @property(strong, nonatomic) Firebase *messageRef;
 @property(strong, nonatomic) PAMUser *currentUser;
 @property(strong, nonatomic) PAMUser *interlocutor;
-
-
-- (IBAction)fakeSender:(id)sender;
-
 
 @end

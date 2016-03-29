@@ -14,6 +14,7 @@
 #import "JSQMessagesToolbarButtonFactory.h"
 #import "JSQMessagesCollectionViewCell.h"
 #import "JSQMessagesAvatarImage.h"
+#import "JSQPhotoMediaItem.h"
 #import "JSQMessageData.h"
 #import "JSQMessage.h"
 
@@ -29,8 +30,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    UIBarButtonItem *clearDialog = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash
+                                                                                 target:self
+                                                                                 action:@selector(actionClearDialog)];
+    
+    UIBarButtonItem *answerInterlocutor = [[UIBarButtonItem alloc] initWithTitle:@"Answer"
+                                                                           style:UIBarButtonItemStylePlain
+                                                                          target:self
+                                                                          action:@selector(actionAnswerInterlocutor)];
+    NSArray *arrayWithItem = [[NSArray alloc] initWithObjects:clearDialog, answerInterlocutor, nil];
+    self.navigationItem.rightBarButtonItems = arrayWithItem;
+    
     self.messages = [NSMutableArray new];
     self.rootRef = [[Firebase alloc] initWithUrl:@"https://shining-heat-3690.firebaseio.com"];
+    [self.inputToolbar.contentView.textView.layer setCornerRadius:2.f];
+    self.inputToolbar.contentView.textView.placeHolder = @"";
 
     self.messageRef = [self.rootRef childByAppendingPath:[NSString stringWithFormat:@"messages/%@", [self uniqueNameDialog]]];
     self.collectionView.backgroundColor = [UIColor colorWithRed:234/255.f green:234/255.f blue:234/255.f alpha:1];
@@ -40,11 +54,13 @@
     self.collectionView.collectionViewLayout.outgoingAvatarViewSize = CGSizeZero;
 }
 
+
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self observeMessages];
 }
 
+#pragma mark - Helpers
 - (NSString *)uniqueNameDialog {
     int curentId = (int)[self.currentUser.uid substringFromIndex:9];
     int interlocutor = (int)[self.interlocutor.uid substringFromIndex:9];
@@ -61,14 +77,15 @@
 }
 
 - (void)observeMessages {
+    __weak PAMMessagerViewController *weakSelf = self;
     FQuery *messagesQuery = [self.messageRef queryLimitedToLast:25];
     [messagesQuery observeEventType:FEventTypeChildAdded
      andPreviousSiblingKeyWithBlock:^(FDataSnapshot *snapshot, NSString *prevKey) {
          
-         [self addMessageUId: snapshot.value[@"senderId"]
+         [weakSelf addMessageUId: snapshot.value[@"senderId"]
                         test: snapshot.value[@"text"]
                         date: [NSDate dateWithTimeIntervalSince1970:[snapshot.value[@"date"] integerValue]]];
-         [self finishReceivingMessage];
+         [weakSelf finishReceivingMessage];
      }
                     withCancelBlock:^(NSError *error) {
                         if(error) {
@@ -76,7 +93,6 @@
                         }
                     }];
 }
-
 
 
 #pragma mark - JSQMessageData
@@ -123,8 +139,6 @@
 }
 
 
-
-
 #pragma mark - AvatarImage
 
 - (id<JSQMessageAvatarImageDataSource>)collectionView:(JSQMessagesCollectionView *)collectionView avatarImageDataForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -145,15 +159,21 @@
 }
 
 #pragma mark - Actions
-- (IBAction)fakeSender:(id)sender {
+- (void)actionAnswerInterlocutor {
     Firebase *itemRef = [self.messageRef childByAutoId];
     [itemRef setValue:@{@"text": [NSString stringWithFormat:@"%@ test text", self.interlocutor.prettyName],
                         @"senderId": self.interlocutor.uid,
                         @"date": @([[NSDate date] timeIntervalSince1970])}];
     
     [JSQSystemSoundPlayer jsq_playMessageSentSound];
-    
+
     [self finishSendingMessage];
+}
+
+- (void)actionClearDialog {
+    [self.messageRef removeValue];
+    [self.messages removeAllObjects];
+    [self finishReceivingMessage];
 }
 
 -(void)didPressSendButton:(UIButton *)button withMessageText:(NSString *)text senderId:(NSString *)senderId senderDisplayName:(NSString *)senderDisplayName date:(NSDate *)date {
@@ -169,12 +189,13 @@
 }
 
 - (void)didPressAccessoryButton:(UIButton *)sender {
-    UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@"Media messages"
-                                                       delegate:nil
-                                              cancelButtonTitle:@"Cancel"
-                                         destructiveButtonTitle:nil
-                                              otherButtonTitles:@"Send photo", @"Send location", @"Send video", nil];
-    
-    [sheet showFromToolbar:self.inputToolbar];
+    JSQPhotoMediaItem *photoItem = [[JSQPhotoMediaItem alloc] initWithImage:self.currentUser.avatarImage];
+    JSQMessage *photoMessage = [JSQMessage messageWithSenderId:self.currentUser.uid
+                                                   displayName:self.currentUser.prettyName
+                                                         media:photoItem];
+    [self.messages addObject:photoMessage];
+    [JSQSystemSoundPlayer jsq_playMessageSentSound];
+    [self finishSendingMessageAnimated:YES];
 }
+
 @end

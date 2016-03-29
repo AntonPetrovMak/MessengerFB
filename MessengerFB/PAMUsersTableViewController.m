@@ -30,37 +30,36 @@
     } else {
         self.currentUser = [PAMUser new];
     }
-    
-    
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl addTarget:self action:@selector(upDateTable) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refreshControl;
-    __weak PAMUsersTableViewController *weakSelf = self;
-    [[self.ref childByAppendingPath:@"users"]observeEventType: FEventTypeChildAdded
-                                                    withBlock: [self addUserFromFirebase:weakSelf]
-                                              withCancelBlock:^(NSError *error) {
-     NSLog(@"observeEventType: %@", error.description);
-     }];
+    [self.refreshControl beginRefreshing];
+    [self observeUsers];
 }
+
+#pragma mark - Helpers
 
 - (void)upDateTable {
     [self.tableView reloadData];
     [self.refreshControl endRefreshing];
 }
 
+- (void)observeUsers {
+    __weak PAMUsersTableViewController *weakSelf = self;
+    [[self.ref childByAppendingPath:@"users"]observeEventType: FEventTypeChildAdded
+                                                    withBlock: [self addUserFromFirebase:weakSelf]
+                                              withCancelBlock:^(NSError *error) {
+                                                  NSLog(@"observeEventType: %@", error.description);
+                                              }];
+}
+
 - (void(^)(FDataSnapshot *snapshot)) addUserFromFirebase:(PAMUsersTableViewController *) weakSelf {
     return ^(FDataSnapshot *snapshot) {
         PAMUser *user = [[PAMUser alloc] initWithDataSnapshot:snapshot];
-        //NSLog(@"%@", user);
-        if(![weakSelf.currentUser isEqual:user]) {
-            [weakSelf.arrayWithUser addObject: user];
-            [weakSelf.tableView reloadData];
-        }
+        [weakSelf.arrayWithUser addObject: user];
+        [weakSelf.refreshControl endRefreshing];
+        [weakSelf.tableView reloadData];
     };
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    
 }
 
 #pragma mark - Action
@@ -107,8 +106,7 @@
         NSInteger selectedRow = [[self.tableView indexPathForSelectedRow] row];
         PAMUser *user = [self.arrayWithUser objectAtIndex:selectedRow];
 
-        
-        self.navigationItem.backBarButtonItem.title = [user prettyName];
+        self.navigationItem.backBarButtonItem.title = user.prettyName;
         //self.navigationItem.backBarButtonItem.image = [user avatarImage];
         messagerViewController.currentUser = self.currentUser;
         messagerViewController.interlocutor = user;

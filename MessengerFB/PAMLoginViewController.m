@@ -17,13 +17,12 @@
 @implementation PAMLoginViewController
 
 - (void)viewDidLoad {
-    
     [super viewDidLoad];
+    FBSDKLoginManager *loginManager = [[FBSDKLoginManager alloc] init];
+    [loginManager logOut];
     self.ref = [[Firebase alloc] initWithUrl:@"https://shining-heat-3690.firebaseio.com"];
     self.loginButton.delegate = self;
     self.loginButton.readPermissions = @[@"public_profile", @"email"];
-    [self.view addSubview:self.loginButton];
-    
 }
 
 - (void)authenticationInFirebase {
