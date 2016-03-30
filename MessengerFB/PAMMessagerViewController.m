@@ -62,9 +62,9 @@
 
 #pragma mark - Helpers
 - (NSString *)uniqueNameDialog {
-    int curentId = (int)[self.currentUser.uid substringFromIndex:9];
-    int interlocutor = (int)[self.interlocutor.uid substringFromIndex:9];
-    if(curentId <= interlocutor) {
+    NSComparisonResult result = [self.currentUser.uid  compare:self.interlocutor.uid ];
+    
+    if(result == NSOrderedAscending || result == NSOrderedSame) {
         return [NSString stringWithFormat:@"%@%@", self.currentUser.uid, self.interlocutor.uid];
     } else {
         return [NSString stringWithFormat:@"%@%@", self.interlocutor.uid, self.currentUser.uid];
